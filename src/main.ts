@@ -8,11 +8,11 @@ import type { App } from 'vue'
 // import 'element-plus/lib/theme-chalk/index.css'
 // 局部引入
 import 'element-plus/lib/theme-chalk/base.css'
-import { registerApp } from './global'
+import { globalRegister } from './global'
 
 const app: App = createApp(rootApp)
 
-registerApp(app)
+app.use(globalRegister)
 app.use(Router)
 app.use(Store)
 app.mount('#app')
