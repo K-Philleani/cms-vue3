@@ -1,13 +1,18 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+import rootApp from './App.vue'
 import Router from './router'
 import Store from './store'
-import ElementPlus from 'element-plus'
-import 'element-plus/lib/theme-chalk/index.css'
+import type { App } from 'vue'
+// 全局引入
+// import ElementPlus from 'element-plus'
+// import 'element-plus/lib/theme-chalk/index.css'
+// 局部引入
+import 'element-plus/lib/theme-chalk/base.css'
+import { registerApp } from './global'
 
-const app = createApp(App)
+const app: App = createApp(rootApp)
+
+registerApp(app)
 app.use(Router)
 app.use(Store)
-app.use(ElementPlus)
-
 app.mount('#app')
