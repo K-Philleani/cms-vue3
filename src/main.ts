@@ -3,6 +3,7 @@ import rootApp from './App.vue'
 import Router from './router'
 import Store from './store'
 import type { App } from 'vue'
+import './service'
 // 全局引入
 // import ElementPlus from 'element-plus'
 // import 'element-plus/lib/theme-chalk/index.css'
