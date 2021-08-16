@@ -1,13 +1,10 @@
-import axios from 'axios'
-import type { AxiosResponse } from 'axios'
+// service 统一出口
+import Request from './request'
+import { BASEURL, TIMEOUT } from './request/config'
 
-// axios基本配置项
-axios.defaults.baseURL = 'http://123.207.32.32:8000'
-axios.defaults.timeout = 5000
-
-axios.get('/home/multidata').then((res: AxiosResponse) => {
-  console.log(res.data)
+const apiRequest = new Request({
+  baseURL: BASEURL,
+  timeout: TIMEOUT
 })
 
-console.log(process.env.NODE_ENV)
-console.log(process.env.VUE_APP_BASE_URL)
+export default apiRequest
