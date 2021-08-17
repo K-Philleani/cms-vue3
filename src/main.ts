@@ -15,6 +15,21 @@ apiRequest.request({
   method: 'get'
 })
 
+// apiRequest.request({
+//   url: '/home/multidata',
+//   method: 'get',
+//   interceptors: {
+//     requestInterceptor: (config) => {
+//       console.log('单独请求的config')
+//       return config
+//     },
+//     responseInterceptor: (res) => {
+//       console.log('单独响应的config')
+//       return res
+//     }
+//   }
+// })
+
 const app: App = createApp(rootApp)
 
 app.use(globalRegister)
