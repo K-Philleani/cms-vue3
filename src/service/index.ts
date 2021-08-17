@@ -1,13 +1,28 @@
-import axios from 'axios'
-import type { AxiosResponse } from 'axios'
+// service 统一出口
+import Request from './request'
+import { BASEURL, TIMEOUT } from './request/config'
 
-// axios基本配置项
-axios.defaults.baseURL = 'http://123.207.32.32:8000'
-axios.defaults.timeout = 5000
-
-axios.get('/home/multidata').then((res: AxiosResponse) => {
-  console.log(res.data)
+const apiRequest = new Request({
+  baseURL: BASEURL,
+  timeout: TIMEOUT,
+  interceptors: {
+    requestInterceptor: (config) => {
+      console.log('请求拦截成功')
+      return config
+    },
+    requestInterceptorCatch: (err) => {
+      console.log('请求拦截失败')
+      return err
+    },
+    responseInterceptor: (config) => {
+      console.log('响应拦截成功')
+      return config
+    },
+    responseInterceptorCatch: (err) => {
+      console.log('响应拦截失败')
+      return err
+    }
+  }
 })
 
-console.log(process.env.NODE_ENV)
-console.log(process.env.VUE_APP_BASE_URL)
+export default apiRequest
