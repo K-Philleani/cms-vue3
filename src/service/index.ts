@@ -8,15 +8,19 @@ const apiRequest = new Request({
   interceptors: {
     requestInterceptor: (config) => {
       console.log('实例请求拦截成功')
+      const token = ''
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`
+      }
       return config
     },
     requestInterceptorCatch: (err) => {
       console.log('实例请求拦截失败')
       return err
     },
-    responseInterceptor: (config) => {
+    responseInterceptor: (res) => {
       console.log('实例响应拦截成功')
-      return config
+      return res.data
     },
     responseInterceptorCatch: (err) => {
       console.log('实例响应拦截失败')

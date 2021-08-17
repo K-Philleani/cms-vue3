@@ -33,9 +33,9 @@ class Request {
     )
     // 所有实例都有的响应拦截器
     this.instance.interceptors.response.use(
-      (config) => {
+      (res) => {
         console.log('所有实例都有的拦截器：响应拦截成功')
-        return config
+        return res.data
       },
       (err) => {
         console.log('所有实例都有的拦截器：响应拦截失败')
