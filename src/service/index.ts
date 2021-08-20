@@ -7,19 +7,26 @@ const apiRequest = new Request({
   timeout: TIMEOUT,
   interceptors: {
     requestInterceptor: (config) => {
-      console.log('实例请求拦截成功')
+      // 携带token的拦截
+      const token = ''
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`
+      }
+
+      console.log('请求成功的拦截')
       return config
     },
     requestInterceptorCatch: (err) => {
-      console.log('实例请求拦截失败')
+      console.log('请求失败的拦截')
       return err
     },
-    responseInterceptor: (config) => {
-      console.log('实例响应拦截成功')
-      return config
+    responseInterceptor: (res) => {
+      console.log('响应成功的拦截')
+      console.log('res1', res)
+      return res
     },
     responseInterceptorCatch: (err) => {
-      console.log('实例响应拦截失败')
+      console.log('响应失败的拦截')
       return err
     }
   }
